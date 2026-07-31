@@ -26,6 +26,7 @@ export function AudioPlayer({
     playsRemaining,
     isLocked,
     isRequesting,
+    canFreeResume,
     play,
     pause,
   } = useAudioPlayer({ sessionId, audioId, src, initialPlaysUsed });
@@ -84,6 +85,11 @@ export function AudioPlayer({
           <>
             <Pause className="size-4" />
             Тоқтату
+          </>
+        ) : canFreeResume ? (
+          <>
+            <Play className="size-4" />
+            Жалғастыру
           </>
         ) : (
           <>
