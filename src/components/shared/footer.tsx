@@ -9,19 +9,19 @@ export function Footer() {
         <div className="flex flex-col items-center gap-2 sm:items-start">
           <Logo />
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Level Line. All rights reserved.
+            © {new Date().getFullYear()} Level Line. Барлық құқықтар қорғалған.
           </p>
         </div>
 
         <div className="flex items-center gap-6 text-sm text-muted-foreground">
           <a href="#faq" className="hover:text-foreground transition-colors">
-            FAQ
+            Сұрақ-жауап
           </a>
           <Link href="/test" className="hover:text-foreground transition-colors">
             Start Test
           </Link>
           <Link href="/admin/login" className="hover:text-foreground transition-colors">
-            Admin
+            Әкімші
           </Link>
         </div>
       </div>

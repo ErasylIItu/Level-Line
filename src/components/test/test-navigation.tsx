@@ -28,18 +28,18 @@ export function TestNavigation({
         disabled={!canGoPrevious}
       >
         <ArrowLeft className="size-4" />
-        Previous
+        Алдыңғы
       </Button>
 
       <Button type="button" onClick={onNext} disabled={!canGoNext}>
         {isLast ? (
           <>
-            Finish test
+            Тестті аяқтау
             <Flag className="size-4" />
           </>
         ) : (
           <>
-            Next
+            Келесі
             <ArrowRight className="size-4" />
           </>
         )}

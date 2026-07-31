@@ -3,10 +3,10 @@ import { Clock, ListChecks, Zap, BadgeCheck } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
 const STATS = [
-  { icon: ListChecks, value: "40", label: "Questions" },
-  { icon: Clock, value: "40", label: "Minutes" },
-  { icon: Zap, value: "Instant", label: "Result" },
-  { icon: BadgeCheck, value: "CEFR", label: "Based" },
+  { icon: ListChecks, value: "40", label: "Сұрақ" },
+  { icon: Clock, value: "40", label: "Минут" },
+  { icon: Zap, value: "Лезде", label: "Нәтиже" },
+  { icon: BadgeCheck, value: "CEFR", label: "негізінде" },
 ];
 
 export function Stats() {

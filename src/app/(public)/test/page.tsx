@@ -14,19 +14,19 @@ import { startTestSession } from "@/lib/api/test-client";
 const NOTES = [
   {
     icon: ListChecks,
-    text: `${TOTAL_QUESTIONS} questions covering vocabulary, grammar, reading, and listening.`,
+    text: `${TOTAL_QUESTIONS} сұрақ: сөздік қор, грамматика, оқылым және тыңдалым бөлімдерін қамтиды.`,
   },
   {
     icon: Clock,
-    text: `You'll have ${TEST_DURATION_MINUTES} minutes. The test auto-submits when time runs out.`,
+    text: `Сізге ${TEST_DURATION_MINUTES} минут беріледі. Уақыт аяқталғанда тест автоматты түрде тапсырылады.`,
   },
   {
     icon: Headphones,
-    text: "Each listening audio can be played a maximum of two times.",
+    text: "Әр тыңдалым аудиосын ең көбі екі рет тыңдауға болады.",
   },
   {
     icon: ShieldCheck,
-    text: "No account needed. Your result is calculated instantly at the end.",
+    text: "Тіркелу қажет емес. Нәтижеңіз тест аяқталысымен бірден есептеледі.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function TestIntroPage() {
       const { sessionId } = await startTestSession();
       router.push(`/test/${sessionId}`);
     } catch {
-      setError("Couldn't start the test. Please try again.");
+      setError("Тестті бастау мүмкін болмады. Қайта көріңіз.");
       setStarting(false);
     }
   }
@@ -56,10 +56,11 @@ export default function TestIntroPage() {
       <Card className="w-full max-w-lg">
         <CardContent className="pt-8">
           <h1 className="text-2xl font-extrabold tracking-tight text-foreground">
-            Before you begin
+            Бастамас бұрын
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            A few quick things to know about the Level Line placement test.
+            Level Line деңгей анықтау тесті туралы білуіңіз керек бірнеше
+            маңызды ереже.
           </p>
 
           <ul className="mt-7 flex flex-col gap-4">
@@ -88,10 +89,10 @@ export default function TestIntroPage() {
             {starting ? (
               <>
                 <Loader2 className="size-4 animate-spin" />
-                Preparing your test...
+                Тест дайындалуда...
               </>
             ) : (
-              "Begin Test"
+              "Тестті бастау"
             )}
           </Button>
         </CardContent>

@@ -8,24 +8,24 @@ import {
 
 const FAQS = [
   {
-    q: "Do I need to create an account to take the test?",
-    a: "No. Level Line requires no signup or registration — just click Start Test and begin immediately.",
+    q: "Тестті тапсыру үшін тіркелу керек пе?",
+    a: "Жоқ. Level Line тіркелуді немесе аккаунт ашуды талап етпейді — жай ғана «Start Test» түймесін басып, бірден бастай аласыз.",
   },
   {
-    q: "How long does the test take?",
-    a: "The test consists of 40 questions and typically takes about 40 minutes to complete, including reading and listening sections.",
+    q: "Тест қанша уақыт алады?",
+    a: "Тест 40 сұрақтан тұрады және оқылым мен тыңдалым бөлімдерін қоса алғанда, толығымен өту үшін шамамен 40 минут кетеді.",
   },
   {
-    q: "How is my level determined?",
-    a: "Your answers across vocabulary, grammar, reading, and listening are scored and mapped to the CEFR framework (A1 through B2) to give you an accurate estimate of your English level.",
+    q: "Менің деңгейім қалай анықталады?",
+    a: "Сөздік қор, грамматика, оқылым және тыңдалым бойынша жауаптарыңыз бағаланып, CEFR шкаласына (A1-ден B2-ге дейін) сәйкестендіріледі — осылайша ағылшын деңгейіңіздің дәл бағасы шығады.",
   },
   {
-    q: "Can I listen to the audio more than twice?",
-    a: "Each listening clip can be played a maximum of two times, matching real-world listening test conditions. After that, the player is disabled and you can proceed to the questions.",
+    q: "Аудионы екі реттен көп тыңдай аламын ба?",
+    a: "Әр аудио жазбаны ең көбі екі рет тыңдауға болады — бұл нақты тыңдалым тестінің шартына сәйкес келеді. Одан кейін плеер өшіріледі және сіз сұрақтарға өте аласыз.",
   },
   {
-    q: "Is the result really instant?",
-    a: "Yes. As soon as you finish the test, your overall score, section breakdown, and CEFR level are calculated and displayed immediately.",
+    q: "Нәтиже шынымен бірден шыға ма?",
+    a: "Иә. Тестті аяқтасымен жалпы балл, бөлімдер бойынша нәтиже және CEFR деңгейіңіз бірден есептеліп, экранда көрсетіледі.",
   },
 ];
 
@@ -34,7 +34,7 @@ export function FAQ() {
     <section id="faq" className="mx-auto max-w-3xl px-6 py-24">
       <AnimatedSection className="mb-12 text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          Frequently asked questions
+          Жиі қойылатын сұрақтар
         </h2>
       </AnimatedSection>
 

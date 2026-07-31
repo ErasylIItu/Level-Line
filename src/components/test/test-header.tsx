@@ -42,7 +42,7 @@ export function TestHeader({
       <div className="mx-auto max-w-3xl px-6 pb-4">
         <div className="mb-2 flex items-center justify-between text-xs font-medium text-muted-foreground">
           <span>
-            Question {currentIndex + 1} of {total}
+            Сұрақ {currentIndex + 1} / {total}
           </span>
           <span>{Math.round(progressValue)}%</span>
         </div>

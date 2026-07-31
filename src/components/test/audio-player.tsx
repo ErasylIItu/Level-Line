@@ -54,7 +54,7 @@ export function AudioPlayer({
               : "bg-accent text-accent-foreground"
           )}
         >
-          {isLocked ? "No plays left" : `${playsRemaining} play${playsRemaining === 1 ? "" : "s"} left`}
+          {isLocked ? "Тыңдау мүмкіндігі қалмады" : `${playsRemaining} рет тыңдау қалды`}
         </span>
       </div>
 
@@ -76,25 +76,25 @@ export function AudioPlayer({
         {isLocked ? (
           <>
             <Lock className="size-4" />
-            Playback disabled
+            Тыңдау өшірілген
           </>
         ) : isRequesting ? (
-          "Starting..."
+          "Іске қосылуда..."
         ) : isPlaying ? (
           <>
             <Pause className="size-4" />
-            Pause
+            Тоқтату
           </>
         ) : (
           <>
             <Play className="size-4" />
-            {progress > 0 ? "Replay" : "Play audio"}
+            {progress > 0 ? "Қайта тыңдау" : "Аудионы тыңдау"}
           </>
         )}
       </Button>
 
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        You can listen to this audio a maximum of 2 times.
+        Бұл аудионы ең көбі 2 рет тыңдай аласыз.
       </p>
     </div>
   );

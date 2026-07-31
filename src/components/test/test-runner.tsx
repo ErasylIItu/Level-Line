@@ -19,6 +19,11 @@ import {
   type SessionSnapshot,
 } from "@/lib/api/test-client";
 
+const SECTION_LABELS_KZ: Record<string, string> = {
+  vocabulary: "Лексика (Vocabulary)",
+  grammar: "Грамматика (Grammar)",
+};
+
 export function TestRunner({ sessionId }: { sessionId: string }) {
   const router = useRouter();
 
@@ -56,7 +61,7 @@ export function TestRunner({ sessionId }: { sessionId: string }) {
       } catch {
         if (!cancelled) {
           setLoadError(
-            "We couldn't load your test session. It may have expired — please start again."
+            "Тест сеансын жүктеу мүмкін болмады. Мерзімі аяқталған болуы мүмкін — қайта бастаңыз."
           );
         }
       }
@@ -98,7 +103,7 @@ export function TestRunner({ sessionId }: { sessionId: string }) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-3">
         <Loader2 className="size-6 animate-spin text-primary" />
-        <p className="text-sm text-muted-foreground">Loading your test...</p>
+        <p className="text-sm text-muted-foreground">Тест жүктелуде...</p>
       </div>
     );
   }
@@ -152,7 +157,7 @@ export function TestRunner({ sessionId }: { sessionId: string }) {
             question={step.question}
             selectedOptionId={selectedOptionId}
             onSelect={selectAnswer}
-            eyebrow={step.section}
+            eyebrow={SECTION_LABELS_KZ[step.section] ?? step.section}
           />
         )}
 
@@ -167,7 +172,7 @@ export function TestRunner({ sessionId }: { sessionId: string }) {
               question={step.question}
               selectedOptionId={selectedOptionId}
               onSelect={selectAnswer}
-              eyebrow="Reading"
+              eyebrow="Оқылым (Reading)"
             />
           </div>
         )}

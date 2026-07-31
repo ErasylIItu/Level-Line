@@ -8,10 +8,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "#skills", label: "How it works" },
-  { href: "#founder", label: "About" },
-  { href: "#testimonials", label: "Reviews" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#skills", label: "Қалай жұмыс істейді" },
+  { href: "#testimonials", label: "Пікірлер" },
+  { href: "#faq", label: "Сұрақ-жауап" },
 ];
 
 export function Navbar() {
@@ -40,13 +39,13 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 

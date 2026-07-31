@@ -3,9 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Check } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+
+const CHECKLIST = [
+  "Сөздік қорыңызды",
+  "Грамматика деңгейіңізді",
+  "Reading (мәтінді түсіну) дағдыңызды",
+  "Listening (тыңдалым) деңгейіңізді",
+];
 
 export function Hero() {
   return (
@@ -29,19 +36,33 @@ export function Hero() {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-semibold text-secondary-foreground">
             <Sparkles className="size-3.5 text-primary" />
-            CEFR-based · Trusted results
+            CEFR негізінде · Сенімді нәтиже
           </div>
 
           <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Find out your{" "}
-            <span className="text-brand-gradient">real English level</span>{" "}
-            in 40 minutes
+            40 сұрақтан тұратын қысқа тесттен өтіп, деңгейіңізді анықтаңыз
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Level Line is a precise, CEFR-aligned placement test that measures
-            your vocabulary, grammar, reading, and listening — no signup,
-            no waiting, just an accurate result you can trust.
+            Біздің ағылшын деңгейін анықтау тесті:
+          </p>
+
+          <ul className="mt-4 flex max-w-xl flex-col gap-2.5">
+            {CHECKLIST.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-base text-foreground/90"
+              >
+                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <Check className="size-3" />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+            Тест нәтижесінде ағылшын деңгейіңізді анықтайды.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -51,16 +72,17 @@ export function Hero() {
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
-            <a
+
+            <Link
               href="#skills"
               className="text-sm font-semibold text-foreground/80 underline-offset-4 hover:text-foreground hover:underline"
             >
-              See how it works
-            </a>
+              Қалай жұмыс істейтінін көру
+            </Link>
           </div>
 
           <p className="mt-6 text-xs text-muted-foreground">
-            No registration required · Free instant results
+            Тіркелу қажет емес · Тегін әрі жедел нәтиже
           </p>
         </motion.div>
 
@@ -74,7 +96,7 @@ export function Hero() {
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border card-shadow-lg">
             <Image
               src="/images/founder-uldana.png"
-              alt="Uldana — Level Line founder"
+              alt="Level Line"
               fill
               priority
               className="object-cover"
@@ -86,7 +108,7 @@ export function Hero() {
           <div className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-border bg-card/95 px-5 py-4 backdrop-blur card-shadow-lg sm:block">
             <p className="text-2xl font-extrabold text-brand-gradient">40</p>
             <p className="text-xs font-medium text-muted-foreground">
-              questions, one clear result
+              сұрақ, бір нақты нәтиже
             </p>
           </div>
         </motion.div>

@@ -6,27 +6,27 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const SKILLS = [
   {
     icon: SpellCheck2,
-    title: "Vocabulary",
+    title: "Vocabulary (Сөздік қор)",
     description:
-      "Test how wide and precise your word knowledge is, from everyday terms to nuanced usage.",
+      "Күнделікті сөздерден бастап, күрделірек тілдік құрылымдарға дейін сөздік қорыңыздың кеңдігі мен дәлдігі тексеріледі.",
   },
   {
     icon: PenLine,
-    title: "Grammar",
+    title: "Grammar (Грамматика)",
     description:
-      "Measure your command of English structure — tenses, agreement, and sentence construction.",
+      "Ағылшын тілінің құрылымын — етістік шақтарын, сөйлем құрылысын және грамматикалық ережелерді меңгеру деңгейіңіз бағаланады.",
   },
   {
     icon: BookOpen,
-    title: "Reading",
+    title: "Reading (Оқылым)",
     description:
-      "Comprehend real passages and answer questions that test depth of understanding, not memorization.",
+      "Нақты мәтіндерді оқып, оларды жаттап алу емес, шынымен түсінгеніңізді тексеретін сұрақтарға жауап бересіз.",
   },
   {
     icon: Headphones,
-    title: "Listening",
+    title: "Listening (Тыңдалым)",
     description:
-      "Understand natural spoken English through short audio clips and contextual questions.",
+      "Қысқа аудиожазбалар мен контекстке негізделген сұрақтар арқылы табиғи ағылшын сөйлеуін түсіну деңгейіңіз анықталады.",
   },
 ];
 
@@ -35,11 +35,11 @@ export function Skills() {
     <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
       <AnimatedSection className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          Four skills. One accurate score.
+          Төрт дағды. Бір нақты нәтиже.
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Level Line evaluates the core pillars of English proficiency to
-          give you a result that actually reflects your ability.
+          Level Line сіздің шынайы деңгейіңізді көрсететін нәтиже алу үшін
+          ағылшын тілін меңгерудің негізгі дағдыларын бағалайды.
         </p>
       </AnimatedSection>
 

@@ -14,7 +14,7 @@ export function ReadingPassagePanel({
     <Card className="h-full">
       <CardContent className="pt-6">
         <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-primary">
-          Reading passage
+          Мәтін (Reading)
         </span>
         <h3 className="mb-4 text-lg font-bold text-foreground">
           {passage.title}
@@ -27,7 +27,7 @@ export function ReadingPassagePanel({
           ))}
         </div>
         <p className="mt-4 border-t border-border pt-3 text-xs font-medium text-muted-foreground">
-          Question {questionNumber} of {totalInPassage} for this passage
+          Осы мәтін бойынша сұрақ {questionNumber} / {totalInPassage}
         </p>
       </CardContent>
     </Card>

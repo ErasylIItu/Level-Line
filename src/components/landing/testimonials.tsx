@@ -5,11 +5,11 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 const REVIEW_IMAGES = [
   {
     src: "/images/testimonials/reviews-1.png",
-    alt: "Level Line student reviews — Baibolat, Gulzat, Aikerim, Karakat",
+    alt: "Level Line студенттерінің пікірлері — Байболат, Гүлзат, Айкерім, Қарақат",
   },
   {
     src: "/images/testimonials/reviews-2.png",
-    alt: "Level Line student reviews — Nazerke, Zhanel, Armat, Aidana",
+    alt: "Level Line студенттерінің пікірлері — Назерке, Жанель, Арман, Айдана",
   },
 ];
 
@@ -19,10 +19,11 @@ export function Testimonials() {
       <div className="mx-auto max-w-6xl px-6">
         <AnimatedSection className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Trusted by learners everywhere
+            Оқушылар бізге сенеді
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Real students, real results — from placement to fluency.
+            Нақты студенттер, нақты нәтижелер — деңгейді анықтаудан бастап
+            еркін сөйлеуге дейін.
           </p>
         </AnimatedSection>
 

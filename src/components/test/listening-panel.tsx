@@ -41,7 +41,7 @@ export function ListeningPanel({
     <div className="grid gap-5">
       <div>
         <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-primary">
-          Listening
+          Тыңдалым (Listening)
         </span>
         <AudioPlayer
           sessionId={sessionId}
@@ -63,11 +63,11 @@ export function ListeningPanel({
             <Card>
               <CardContent className="flex flex-col items-center gap-4 py-10 text-center">
                 <p className="max-w-sm text-sm text-muted-foreground">
-                  Listen carefully. Once you&apos;re ready, continue to see
-                  the questions for this audio.
+                  Мұқият тыңдаңыз. Дайын болған соң, осы аудио бойынша
+                  сұрақтарды көру үшін жалғастырыңыз.
                 </p>
                 <Button onClick={() => setRevealed(true)}>
-                  Continue to questions
+                  Сұрақтарға өту
                   <ChevronRight className="size-4" />
                 </Button>
               </CardContent>
@@ -97,7 +97,7 @@ export function ListeningPanel({
                   ))}
                 </div>
                 <p className="mt-5 text-xs font-medium text-muted-foreground">
-                  Question {questionNumber} of {totalInAudio} for this audio
+                  Осы аудио бойынша сұрақ {questionNumber} / {totalInAudio}
                 </p>
               </CardContent>
             </Card>
