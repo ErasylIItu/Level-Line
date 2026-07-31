@@ -2,12 +2,22 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { Play, Sparkles } from "lucide-react";
+import { Play } from "lucide-react";
 
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { cn } from "@/lib/utils";
 
+/**
+ * All cards in this grid render at the exact same box size
+ * (aspect-[5/7] + object-cover), whether they're a photo or the video.
+ */
+const CARD_ASPECT = "aspect-[5/7]";
+
 const REVIEW_IMAGES = [
+  {
+    src: "/images/testimonials/reviews-3.png",
+    alt: "Level Line курсы — Ағылшынды бастайтын кез келді",
+  },
   {
     src: "/images/testimonials/reviews-1.png",
     alt: "Level Line студенттерінің пікірлері — Байболат, Гүлзат, Айкерім, Қаракат",
@@ -36,47 +46,51 @@ function VideoTestimonial() {
   }
 
   return (
-    <AnimatedSection delay={0.2} className="flex flex-col items-center">
-      {/* Caption pill, matching the hero's badge style */}
-      <div className="mb-5 inline-flex max-w-md items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-2 text-center text-xs font-semibold leading-relaxed text-secondary-foreground">
-        <Sparkles className="size-3.5 shrink-0 text-primary" />
-        {VIDEO_CAPTION}
-      </div>
+    <div
+      className={cn(
+        CARD_ASPECT,
+        "relative w-full overflow-hidden rounded-3xl border border-border bg-black card-shadow-lg"
+      )}
+    >
+      <video
+        ref={videoRef}
+        src="/videos/testimonial-1.mp4"
+        controls={status === "playing"}
+        playsInline
+        preload="metadata"
+        className="h-full w-full object-cover"
+        onPause={() => setStatus("idle")}
+        onError={() => setStatus("error")}
+      />
 
-      <div className="relative mx-auto aspect-[9/16] w-full max-w-xs overflow-hidden rounded-3xl border border-border bg-black card-shadow-lg">
-        <video
-          ref={videoRef}
-          src="/videos/testimonial-1.mp4"
-          controls={status === "playing"}
-          playsInline
-          preload="metadata"
-          className="h-full w-full object-cover"
-          onPause={() => setStatus("idle")}
-          onError={() => setStatus("error")}
-        />
-
-        {status !== "playing" && (
-          <button
-            type="button"
-            onClick={handlePlay}
-            aria-label="Видео-пікірді ойнату"
-            className={cn(
-              "absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/20 transition-colors hover:bg-black/30",
-              status === "error" && "bg-black/50"
-            )}
-          >
-            <span className="flex size-16 items-center justify-center rounded-full bg-white/90 text-primary shadow-lg backdrop-blur">
-              <Play className="size-7 translate-x-0.5 fill-current" />
+      {status !== "playing" && (
+        <button
+          type="button"
+          onClick={handlePlay}
+          aria-label="Видео-пікірді ойнату"
+          className={cn(
+            "absolute inset-0 flex flex-col items-center justify-center bg-black/20 transition-colors hover:bg-black/30",
+            status === "error" && "bg-black/50"
+          )}
+        >
+          <span className="flex size-16 items-center justify-center rounded-full bg-white/90 text-primary shadow-lg backdrop-blur">
+            <Play className="size-7 translate-x-0.5 fill-current" />
+          </span>
+          {status === "error" && (
+            <span className="mt-3 max-w-[200px] text-center text-xs font-medium text-white/90">
+              Видео жүктелмеді. Файл орналасуын тексеріңіз.
             </span>
-            {status === "error" && (
-              <span className="max-w-[200px] text-center text-xs font-medium text-white/90">
-                Видео жүктелмеді. Файл орналасуын тексеріңіз.
-              </span>
-            )}
-          </button>
-        )}
+          )}
+        </button>
+      )}
+
+      {/* Caption overlay — stays inside the card so the box size never changes */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-4 pb-4 pt-10">
+        <p className="text-xs font-semibold leading-snug text-white">
+          {VIDEO_CAPTION}
+        </p>
       </div>
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -94,25 +108,30 @@ export function Testimonials() {
           </p>
         </AnimatedSection>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {/* Video always renders first */}
+          <AnimatedSection>
+            <VideoTestimonial />
+          </AnimatedSection>
+
           {REVIEW_IMAGES.map((img, i) => (
-            <AnimatedSection key={img.src} delay={i * 0.1}>
-              <div className="relative overflow-hidden rounded-3xl border border-border card-shadow-lg">
+            <AnimatedSection key={img.src} delay={(i + 1) * 0.08}>
+              <div
+                className={cn(
+                  CARD_ASPECT,
+                  "relative w-full overflow-hidden rounded-3xl border border-border card-shadow-lg"
+                )}
+              >
                 <Image
                   src={img.src}
                   alt={img.alt}
-                  width={1320}
-                  height={1840}
-                  className="h-auto w-full"
-                  sizes="(min-width: 768px) 560px, 92vw"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(min-width: 640px) 480px, 92vw"
                 />
               </div>
             </AnimatedSection>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <VideoTestimonial />
         </div>
       </div>
     </section>
