@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 
 const STATS = [
   { icon: ListChecks, value: "40", label: "Сұрақ" },
-  { icon: Clock, value: "40", label: "Минут" },
+  { icon: Clock, value: "10", label: "Минут" },
   { icon: Zap, value: "Лезде", label: "Нәтиже" },
   { icon: BadgeCheck, value: "CEFR", label: "негізінде" },
 ];
