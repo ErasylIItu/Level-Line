@@ -35,14 +35,24 @@ export function useAudioPlayer({
     if (!audio) return;
 
     const onPlay = () => setIsPlaying(true);
+
     const onPause = () => {
-      setIsPlaying(false);
-      setCanFreeResume(!audio.ended && audio.currentTime > 0);
+      // Some browsers fire "pause" and "ended" together when playback
+      // reaches the end naturally, and the order isn't guaranteed —
+      // `audio.ended` can still read false at the exact moment "pause"
+      // fires. Deferring one tick lets "ended" (if it's coming) settle
+      // first, so we don't wrongly mark a finished play as "resumable".
+      setTimeout(() => {
+        setIsPlaying(false);
+        setCanFreeResume(!audio.ended && audio.currentTime > 0);
+      }, 0);
     };
+
     const onEnded = () => {
       setIsPlaying(false);
       setCanFreeResume(false);
     };
+
     const onTimeUpdate = () => {
       if (audio.duration) {
         setProgress((audio.currentTime / audio.duration) * 100);
@@ -66,8 +76,10 @@ export function useAudioPlayer({
     if (!audio || isRequesting) return;
 
     // Resuming a paused-but-unfinished playback — free, no server call,
-    // no reset to the beginning.
-    if (canFreeResume) {
+    // no reset to the beginning. We check the DOM directly here (not just
+    // the `canFreeResume` state) so a fast click right after "ended" can't
+    // slip through before the deferred pause handler above has settled.
+    if (canFreeResume && !audio.ended && audio.currentTime > 0) {
       await audio.play().catch(() => {});
       return;
     }
@@ -85,6 +97,7 @@ export function useAudioPlayer({
       if (result.locked) return;
 
       audio.currentTime = 0;
+      setCanFreeResume(false);
       await audio.play().catch(() => {
         // Ignore playback errors from placeholder/missing audio sources.
       });
