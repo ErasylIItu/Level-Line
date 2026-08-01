@@ -147,12 +147,17 @@ export default async function ResultsPage({
             </p>
           </CardContent>
         </Card>
+      </div>
 
-        {/* Testimonials — moved here from the landing page */}
-        <div className="mt-6">
-          <Testimonials />
-        </div>
+      {/* Testimonials — wider than the rest of the column so the cards
+          have room to breathe, same as they did on the landing page */}
+      <div className="mt-6 w-full max-w-3xl">
+        <Testimonials />
+      </div>
 
+      <div className="w-full max-w-2xl">
+
+        {/* Overall bands reference table */}
         {/* Overall bands reference table */}
         <Card className="mt-6">
           <CardContent className="pt-6">

@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 /**
@@ -86,7 +85,7 @@ function VideoTestimonial() {
 
       {/* Caption pinned to the TOP — bigger, bolder font so it actually gets noticed */}
       <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/75 via-black/35 to-transparent px-4 pb-10 pt-4">
-        <p className="text-center text-sm font-extrabold leading-snug tracking-tight text-white drop-shadow-md sm:text-base">
+        <p className="text-center text-base font-extrabold leading-snug tracking-tight text-white drop-shadow-md sm:text-lg">
           {VIDEO_CAPTION}
         </p>
       </div>
@@ -96,38 +95,39 @@ function VideoTestimonial() {
 
 export function Testimonials() {
   return (
-    <Card>
-      <CardContent className="pt-6">
-        <h2 className="mb-1 text-center text-xl font-extrabold tracking-tight text-foreground">
+    <div className="rounded-3xl border border-border bg-card p-6 card-shadow sm:p-8">
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
           Оқушылар бізге сенеді
         </h2>
-        <p className="mb-6 text-center text-sm text-muted-foreground">
-          Нақты студенттер, нақты нәтижелер.
+        <p className="mt-3 text-muted-foreground">
+          Нақты студенттер, нақты нәтижелер — деңгейді анықтаудан бастап
+          еркін сөйлеуге дейін.
         </p>
+      </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {/* Video always renders first */}
-          <VideoTestimonial />
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {/* Video always renders first */}
+        <VideoTestimonial />
 
-          {REVIEW_IMAGES.map((img) => (
-            <div
-              key={img.src}
-              className={cn(
-                CARD_ASPECT,
-                "relative w-full overflow-hidden rounded-2xl border border-border"
-              )}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover object-top"
-                sizes="(min-width: 640px) 180px, 44vw"
-              />
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+        {REVIEW_IMAGES.map((img) => (
+          <div
+            key={img.src}
+            className={cn(
+              CARD_ASPECT,
+              "relative w-full overflow-hidden rounded-3xl border border-border card-shadow-lg"
+            )}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              className="object-cover object-top"
+              sizes="(min-width: 768px) 420px, 92vw"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
