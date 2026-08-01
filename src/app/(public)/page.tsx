@@ -3,7 +3,6 @@ import { Footer } from "@/components/shared/footer";
 import { Hero } from "@/components/landing/hero";
 import { Stats } from "@/components/landing/stats";
 import { Skills } from "@/components/landing/skills";
-import { Testimonials } from "@/components/landing/testimonials";
 import { FAQ } from "@/components/landing/faq";
 
 export default function LandingPage() {
@@ -14,7 +13,6 @@ export default function LandingPage() {
         <Hero />
         <Stats />
         <Skills />
-        <Testimonials />
         <FAQ />
       </main>
       <Footer />

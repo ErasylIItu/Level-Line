@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Award, ArrowRight } from "lucide-react";
+import { Award, ArrowRight, Camera } from "lucide-react";
 
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Testimonials } from "@/components/landing/testimonials";
 import { createServiceClient } from "@/lib/supabase/service";
 import { mapResultRow } from "@/lib/api/mappers";
 
@@ -147,6 +148,11 @@ export default async function ResultsPage({
           </CardContent>
         </Card>
 
+        {/* Testimonials — moved here from the landing page */}
+        <div className="mt-6">
+          <Testimonials />
+        </div>
+
         {/* Overall bands reference table */}
         <Card className="mt-6">
           <CardContent className="pt-6">
@@ -286,7 +292,15 @@ export default async function ResultsPage({
           </CardContent>
         </Card>
 
-        <div className="mt-8 flex justify-center">
+        {/* Screenshot & send to manager callout */}
+        <div className="mt-8 flex items-center justify-center gap-3 rounded-2xl border border-primary/20 bg-accent/60 px-6 py-5 text-center">
+          <Camera className="size-5 shrink-0 text-primary" />
+          <p className="text-base font-semibold text-foreground">
+            Тест нәтижесін скриндап менеджерге жіберіңіз
+          </p>
+        </div>
+
+        <div className="mt-6 flex justify-center">
           <Button asChild size="lg">
             <Link href="/">
               Басты бетке оралу

@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 
-import { AnimatedSection } from "@/components/shared/animated-section";
+import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 /**
@@ -69,7 +69,7 @@ function VideoTestimonial() {
           onClick={handlePlay}
           aria-label="Видео-пікірді ойнату"
           className={cn(
-            "absolute inset-0 flex flex-col items-center justify-center bg-black/20 transition-colors hover:bg-black/30",
+            "absolute inset-0 flex flex-col items-center justify-center bg-black/10 transition-colors hover:bg-black/20",
             status === "error" && "bg-black/50"
           )}
         >
@@ -84,9 +84,9 @@ function VideoTestimonial() {
         </button>
       )}
 
-      {/* Caption overlay — stays inside the card so the box size never changes */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-4 pb-4 pt-10">
-        <p className="text-xs font-semibold leading-snug text-white">
+      {/* Caption pinned to the TOP — bigger, bolder font so it actually gets noticed */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/75 via-black/35 to-transparent px-4 pb-10 pt-4">
+        <p className="text-center text-sm font-extrabold leading-snug tracking-tight text-white drop-shadow-md sm:text-base">
           {VIDEO_CAPTION}
         </p>
       </div>
@@ -96,44 +96,38 @@ function VideoTestimonial() {
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-secondary/40 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <AnimatedSection className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Оқушылар бізге сенеді
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Нақты студенттер, нақты нәтижелер — деңгейді анықтаудан бастап
-            еркін сөйлеуге дейін.
-          </p>
-        </AnimatedSection>
+    <Card>
+      <CardContent className="pt-6">
+        <h2 className="mb-1 text-center text-xl font-extrabold tracking-tight text-foreground">
+          Оқушылар бізге сенеді
+        </h2>
+        <p className="mb-6 text-center text-sm text-muted-foreground">
+          Нақты студенттер, нақты нәтижелер.
+        </p>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {/* Video always renders first */}
-          <AnimatedSection>
-            <VideoTestimonial />
-          </AnimatedSection>
+          <VideoTestimonial />
 
-          {REVIEW_IMAGES.map((img, i) => (
-            <AnimatedSection key={img.src} delay={(i + 1) * 0.08}>
-              <div
-                className={cn(
-                  CARD_ASPECT,
-                  "relative w-full overflow-hidden rounded-3xl border border-border card-shadow-lg"
-                )}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(min-width: 640px) 480px, 92vw"
-                />
-              </div>
-            </AnimatedSection>
+          {REVIEW_IMAGES.map((img) => (
+            <div
+              key={img.src}
+              className={cn(
+                CARD_ASPECT,
+                "relative w-full overflow-hidden rounded-2xl border border-border"
+              )}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover object-top"
+                sizes="(min-width: 640px) 180px, 44vw"
+              />
+            </div>
           ))}
         </div>
-      </div>
-    </section>
+      </CardContent>
+    </Card>
   );
 }

@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "#skills", label: "Қалай жұмыс істейді" },
-  { href: "#testimonials", label: "Пікірлер" },
   { href: "#faq", label: "Сұрақ-жауап" },
 ];
 
