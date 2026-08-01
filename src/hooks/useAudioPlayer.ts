@@ -76,9 +76,7 @@ export function useAudioPlayer({
     if (!audio || isRequesting) return;
 
     // Resuming a paused-but-unfinished playback — free, no server call,
-    // no reset to the beginning. We check the DOM directly here (not just
-    // the `canFreeResume` state) so a fast click right after "ended" can't
-    // slip through before the deferred pause handler above has settled.
+    // no reset to the beginning.
     if (canFreeResume && !audio.ended && audio.currentTime > 0) {
       await audio.play().catch(() => {});
       return;
@@ -91,10 +89,12 @@ export function useAudioPlayer({
     setIsRequesting(true);
     try {
       // The server is the source of truth for play counts — students can't
-      // bypass the two-play limit via page reloads.
+      // bypass the two-play limit via page reloads. NOTE: `result.locked`
+      // means "this was the last allowed play" (used for future clicks),
+      // it does NOT mean "reject this one" — a 200 response here always
+      // means the play was granted and must actually start.
       const result = await registerListeningPlay(sessionId, audioId);
       setPlaysUsed(result.playsUsed);
-      if (result.locked) return;
 
       audio.currentTime = 0;
       setCanFreeResume(false);
@@ -102,7 +102,8 @@ export function useAudioPlayer({
         // Ignore playback errors from placeholder/missing audio sources.
       });
     } catch {
-      // If the request fails, don't let the student play for free.
+      // Only a rejected request (already out of plays, session issue, etc.)
+      // lands here — in that case we correctly don't play.
     } finally {
       setIsRequesting(false);
     }
